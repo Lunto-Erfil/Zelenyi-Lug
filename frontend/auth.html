@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Авторизация | Экоферма "Зелёный Луг"</title>
+    <meta name="description" content="Войдите в систему или зарегистрируйтесь для доступа к персональным предложениям и истории заказов.">
+    
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Иконки -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    
+    <!-- Стили -->
+    <style>
+        :root {
+            --primary-color: #4a7c54;
+            --primary-dark: #3a6345;
+            --secondary-color: #57a5f8;
+            --light-color: #f9f7f0;
+            --dark-color: #2d3e2f;
+            --text-color: #333;
+            --white: #ffffff;
+            --gray: #eaeaea;
+            --error-color: #d32f2f;
+            --success-color: #4a7c54;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, rgba(74, 124, 84, 0.1) 0%, rgba(87, 165, 248, 0.1) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .auth-container {
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .auth-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .auth-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--gray);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .auth-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: -2px;
+        }
+        
+        .auth-tab:hover {
+            color: var(--primary-color);
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--gray);
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 124, 84, 0.1);
+        }
+        
+        .form-group input.error {
+            border-color: var(--error-color);
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .form-message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .form-message.show {
+            display: block;
+        }
+        
+        .form-message.success {
+            background-color: rgba(74, 124, 84, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+        
+        .form-message.error {
+            background-color: rgba(211, 47, 47, 0.1);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--gray);
+        }
+        
+        .auth-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 30px 20px;
+            }
+            
+            .auth-header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .auth-logo {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <a href="farm.html" class="back-link">← Назад</a>
+        
+        <div class="auth-header">
+            <div class="auth-logo">🌱</div>
+            <h1>Экоферма "Зелёный Луг"</h1>
+            <p>Войдите в свой аккаунт или создайте новый</p>
+        </div>
+        
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Вход</button>
+            <button class="auth-tab" data-tab="register">Регистрация</button>
+        </div>
+        
+        <!-- Форма входа -->
+        <form class="auth-form active" id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" name="email" placeholder="your@email.com" required>
+                <span class="error-message" id="loginEmailError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" name="password" placeholder="Введите пароль" required>
+                <span class="error-message" id="loginPasswordError"></span>
+            </div>
+            
+            <button type="submit" class="btn" id="loginBtn">Войти</button>
+            
+            <div class="form-message" id="loginMessage"></div>
+        </form>
+        
+        <!-- Форма регистрации -->
+        <form class="auth-form" id="registerForm">
+            <div class="form-group">
+                <label for="registerName">Имя</label>
+                <input type="text" id="registerName" name="name" placeholder="Ваше имя" required>
+                <span class="error-message" id="registerNameError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" name="email" placeholder="your@email.com" required>
+                <span class="error-message" id="registerEmailError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="registerPhone">Телефон</label>
+                <input type="tel" id="registerPhone" name="phone" placeholder="+7 (999) 123-45-67" required>
+                <span class="error-message" id="registerPhoneError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" name="password" placeholder="Минимум 6 символов" required minlength="6">
+                <span class="error-message" id="registerPasswordError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="registerPasswordConfirm">Подтвердите пароль</label>
+                <input type="password" id="registerPasswordConfirm" name="passwordConfirm" placeholder="Повторите пароль" required>
+                <span class="error-message" id="registerPasswordConfirmError"></span>
+            </div>
+            
+            <button type="submit" class="btn" id="registerBtn">Зарегистрироваться</button>
+            
+            <div class="form-message" id="registerMessage"></div>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Продолжая, вы соглашаетесь с <a href="#">условиями использования</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // Переключение между вкладками
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+                document.getElementById(tabName === 'login' ? 'loginForm' : 'registerForm').classList.add('active');
+                
+                clearMessages();
+            });
+        });
+        
+        function clearMessages() {
+            document.querySelectorAll('.form-message').forEach(msg => {
+                msg.classList.remove('show', 'success', 'error');
+            });
+            document.querySelectorAll('.error-message').forEach(msg => {
+                msg.classList.remove('show');
+            });
+            document.querySelectorAll('input').forEach(input => {
+                input.classList.remove('error');
+            });
+        }
+        
+        function showError(inputId, message) {
+            const input = document.getElementById(inputId);
+            const errorSpan = document.getElementById(inputId + 'Error');
+            input.classList.add('error');
+            if (errorSpan) {
+                errorSpan.textContent = message;
+                errorSpan.classList.add('show');
+            }
+        }
+        
+        function clearError(inputId) {
+            const input = document.getElementById(inputId);
+            const errorSpan = document.getElementById(inputId + 'Error');
+            input.classList.remove('error');
+            if (errorSpan) {
+                errorSpan.classList.remove('show');
+            }
+        }
+        
+        function showMessage(formId, message, type) {
+            const messageEl = document.getElementById(formId + 'Message');
+            messageEl.textContent = message;
+            messageEl.classList.add('show', type);
+        }
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function validatePhone(phone) {
+            const re = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
+            return re.test(phone);
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            clearMessages();
+            
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const submitBtn = document.getElementById('loginBtn');
+            
+            let isValid = true;
+            
+            if (!email) {
+                showError('loginEmail', 'Введите email');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showError('loginEmail', 'Введите корректный email');
+                isValid = false;
+            }
+            
+            if (!password) {
+                showError('loginPassword', 'Введите пароль');
+                isValid = false;
+            } else if (password.length < 6) {
+                showError('loginPassword', 'Пароль должен содержать минимум 6 символов');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Вход...';
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    if (data.token) {
+                        localStorage.setItem('authToken', data.token);
+                        localStorage.setItem('user', JSON.stringify(data.user));
+                    }
+                    
+                    showMessage('login', 'Успешный вход! Перенаправление...', 'success');
+                    
+                    // Перенаправляем на главную страницу
+                    setTimeout(() => {
+                        window.location.href = 'farm.html';
+                    }, 1000);
+                } else {
+                    showMessage('login', data.error || 'Неверный email или пароль', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Войти';
+                }
+            } catch (error) {
+                showMessage('login', 'Ошибка соединения. Попробуйте позже.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Войти';
+            }
+        });
+        
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            clearMessages();
+            
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const phone = document.getElementById('registerPhone').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+            const submitBtn = document.getElementById('registerBtn');
+            
+            let isValid = true;
+            
+            if (!name || name.length < 2) {
+                showError('registerName', 'Введите имя (минимум 2 символа)');
+                isValid = false;
+            }
+            
+            if (!email) {
+                showError('registerEmail', 'Введите email');
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                showError('registerEmail', 'Введите корректный email');
+                isValid = false;
+            }
+            
+            if (!phone) {
+                showError('registerPhone', 'Введите телефон');
+                isValid = false;
+            } else if (!validatePhone(phone)) {
+                showError('registerPhone', 'Введите корректный номер телефона');
+                isValid = false;
+            }
+            
+            if (!password) {
+                showError('registerPassword', 'Введите пароль');
+                isValid = false;
+            } else if (password.length < 6) {
+                showError('registerPassword', 'Пароль должен содержать минимум 6 символов');
+                isValid = false;
+            }
+            
+            if (!passwordConfirm) {
+                showError('registerPasswordConfirm', 'Подтвердите пароль');
+                isValid = false;
+            } else if (password !== passwordConfirm) {
+                showError('registerPasswordConfirm', 'Пароли не совпадают');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Регистрация...';
+            
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, phone, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showMessage('register', 'Регистрация успешна! Выполняется вход...', 'success');
+                    
+                    // Автоматически входим после регистрации
+                    setTimeout(async () => {
+                        try {
+                            const loginResponse = await fetch('/api/auth/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ email, password })
+                            });
+                            
+                            const loginData = await loginResponse.json();
+                            
+                            if (loginResponse.ok && loginData.token) {
+                                localStorage.setItem('authToken', loginData.token);
+                                localStorage.setItem('user', JSON.stringify(loginData.user));
+                                window.location.href = 'farm.html';
+                            } else {
+                                // Если автоматический вход не удался, переключаемся на вкладку входа
+                                document.querySelector('[data-tab="login"]').click();
+                                showMessage('login', 'Регистрация успешна! Войдите в систему.', 'success');
+                            }
+                        } catch (error) {
+                            document.querySelector('[data-tab="login"]').click();
+                            showMessage('login', 'Регистрация успешна! Войдите в систему.', 'success');
+                        }
+                    }, 1500);
+                } else {
+                    showMessage('register', data.error || 'Ошибка при регистрации', 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Зарегистрироваться';
+                }
+            } catch (error) {
+                showMessage('register', 'Ошибка соединения. Попробуйте позже.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Зарегистрироваться';
+            }
+        });
+        
+        // Очистка ошибок при вводе
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', function() {
+                clearError(this.id);
+            });
+        });
+        
+        // Проверка авторизации при загрузке страницы
+        window.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                // Если пользователь уже авторизован, перенаправляем на главную
+                window.location.href = 'farm.html';
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Основные мета-теги -->
+    <title>Экоферма "Зелёный Луг" | Натуральные продукты с доставкой</title>
+    <meta name="description" content="Экологически чистая продукция с собственной фермы. Свежие овощи, фрукты, мясо и молочные продукты прямо от производителя с доставкой на дом.">
+    <meta name="keywords" content="ферма, натуральные продукты, эко-продукты, свежие овощи, фермерское хозяйство, доставка продуктов, органическая еда">
+    <meta name="author" content="Экоферма 'Зелёный Луг'">
+    
+    <!-- Мета-теги для соц. сетей -->
+    <meta property="og:title" content="Экоферма 'Зелёный Луг' | Натуральные продукты с доставкой">
+    <meta property="og:description" content="Экологически чистая продукция с собственной фермы. Свежие овощи, фрукты, мясо и молочные продукты прямо от производителя.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ecoferma-zel-lug.ru">
+    <meta property="og:image" content="https://ecoferma-zel-lug.ru/images/og-image.jpg">
+    
+    <!-- Мета-теги для мобильных устройств -->
+    <meta name="theme-color" content="#4a7c54">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4a7c54">
+    
+    <!-- Иконки -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Стили -->
+    <style>
+        :root {
+            --primary-color: #4a7c54;
+            --primary-dark: #3a6345;
+            --secondary-color: #57a5f8;
+            --light-color: #f9f7f0;
+            --dark-color: #2d3e2f;
+            --text-color: #333;
+            --white: #ffffff;
+            --gray: #eaeaea;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e89c4a;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(rgba(74, 124, 84, 0.8), rgba(74, 124, 84, 0.9)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero h1 {
+            color: var(--white);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Преимущества */
+        .features {
+            padding: 80px 20px;
+            background-color: var(--light-color);
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Продукция */
+        .products {
+            padding: 80px 20px;
+        }
+        
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: var(--gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+            background-color: var(--white);
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        /* О нас */
+        .about {
+            padding: 80px 20px;
+            background-color: var(--light-color);
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            height: 400px;
+            border-radius: 10px;
+            background-color: var(--gray);
+            background-image: url('https://images.unsplash.com/photo-1589923186741-b7d59d6b2c4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .about-content h2 {
+            text-align: left;
+        }
+        
+        .about-content h2:after {
+            left: 0;
+            transform: none;
+        }
+        
+        /* Контакты */
+        .contact {
+            padding: 80px 20px;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo-icon {
+            font-size: 2.2rem;
+            margin-right: 10px;
+        }
+        
+        .footer-links h3,
+        .footer-social h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Мобильная адаптация */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 30px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .features-container,
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🌱</span>
+                <span>Экоферма "Зелёный Луг"</span>
+            </a>
+            
+            <div class="mobile-toggle" id="mobileToggle">☰</div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#products">Продукция</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#features">Преимущества</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><a href="auth.html" id="authLink">Вход</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Натуральные продукты с фермы к вашему столу</h1>
+            <p>Мы выращиваем экологически чистые овощи, фрукты, производим натуральное мясо и молочные продукты. Без химии, ГМО и вредных добавок. Доставляем свежие продукты прямо к вашей двери.</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn">Выбрать продукты</a>
+                <a href="#contact" class="btn btn-secondary">Заказать доставку</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Почему выбирают нашу продукцию</h2>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3>100% Органика</h3>
+                    <p>Все продукты выращиваются без использования химических удобрений и пестицидов.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚜</div>
+                    <h3>Прямо с грядки</h3>
+                    <p>Собираем урожай в день доставки, чтобы вы получали максимально свежие продукты.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставляем продукты в течение 24 часов после сбора. По городу — бесплатно.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Контроль качества</h3>
+                    <p>Все продукты проходят строгий контроль качества на каждом этапе производства.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Продукция -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Наша продукция</h2>
+            <div class="products-container" id="products-container">
+                <!-- Динамическая загрузка продуктов из бд -->
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1592924357228-91a4daadcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Свежие овощи</h3>
+                        <p>Помидоры, огурцы, перец, зелень и другие сезонные овощи с грядки.</p>
+                        <div class="product-price">от 150 ₽/кг</div>
+                        <a href="#contact" class="btn">Заказать</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Фрукты и ягоды</h3>
+                        <p>Яблоки, груши, клубника, малина и другие фрукты прямо из сада.</p>
+                        <div class="product-price">от 200 ₽/кг</div>
+                        <a href="#contact" class="btn">Заказать</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Молочные продукты</h3>
+                        <p>Молоко, творог, сметана, сыр от наших коров свободного выгула.</p>
+                        <div class="product-price">от 120 ₽/шт</div>
+                        <a href="#contact" class="btn">Заказать</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Мясная продукция</h3>
+                        <p>Говядина, свинина, курица, выращенные на натуральных кормах.</p>
+                        <div class="product-price">от 450 ₽/кг</div>
+                        <a href="#contact" class="btn">Заказать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-img"></div>
+            <div class="about-content">
+                <h2>О нашем хозяйстве</h2>
+                <p>Наша ферма существует уже более 15 лет. Мы начали с небольшого участка земли и нескольких животных, а сегодня это современное хозяйство с собственными полями, садами и животноводческим комплексом.</p>
+                <p>Мы придерживаемся принципов органического земледелия и ответственного животноводства. Наши животные содержатся в свободных условиях, получают натуральные корма и заботливый уход.</p>
+                <p>Мы гордимся тем, что предоставляем нашим клиентам возможность питаться здоровой, вкусной и экологически чистой пищей, которую мы производим с любовью и уважением к природе.</p>
+                <a href="#contact" class="btn">Связаться с нами</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Свяжитесь с нами</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Контактная информация</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+7 (495) 123-45-67</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>info@ecoferma-zel-lug.ru</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Московская область, д. Зелёный Луг, ул. Центральная, 15</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">⏰</span>
+                            <span>Пн-Пт: 9:00-18:00, Сб: 10:00-16:00</span>
+                        </div>
+                    </div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставляем заказы ежедневно с 8:00 до 22:00. При заказе от 2000 рублей — доставка бесплатно.</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Оставить заявку</h3>
+                    <form id="orderForm">
+                        <input type="text" id="customerName" name="name" placeholder="Ваше имя" required>
+                        <input type="tel" id="customerPhone" name="phone" placeholder="Ваш телефон" required>
+                        <input type="email" id="customerEmail" name="email" placeholder="Ваш email" required>
+                        <textarea id="orderMessage" name="message" placeholder="Ваш заказ или вопрос" required></textarea>
+                        <button type="submit" class="btn">Отправить заявку</button>
+                    </form>
+                    <div id="formMessage" style="margin-top: 15px; display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Низ -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span class="footer-logo-icon">🌱</span>
+                        <span>Экоферма "Зелёный Луг"</span>
+                    </div>
+                    <p>Мы выращиваем экологически чистые продукты с заботой о природе и здоровье наших клиентов. Присоединяйтесь к нашему сообществу!</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#products">Продукция</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#features">Преимущества</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="ВКонтакте">ВК</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-icon" aria-label="Telegram">TG</a>
+                        <a href="#" class="social-icon" aria-label="WhatsApp">WA</a>
+                    </div>
+                    <p>Подписывайтесь, чтобы быть в курсе новостей и акций!</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Экоферма "Зелёный Луг". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипт для моб. навигации -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+            const orderForm = document.getElementById('orderForm');
+            
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    mobileToggle.textContent = '☰';
+                });
+            });
+            
+            if (orderForm) {
+                orderForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const formMessage = document.getElementById('formMessage');
+                    const submitButton = orderForm.querySelector('button[type="submit"]');
+                    const originalButtonText = submitButton.textContent;
+                    
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Отправка...';
+                    formMessage.style.display = 'none';
+                    
+                    const formData = {
+                        name: document.getElementById('customerName').value,
+                        phone: document.getElementById('customerPhone').value,
+                        email: document.getElementById('customerEmail').value,
+                        message: document.getElementById('orderMessage').value
+                    };
+                    
+                    try {
+                        const response = await fetch('/api/orders', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(formData)
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            formMessage.style.display = 'block';
+                            formMessage.style.color = '#4a7c54';
+                            formMessage.textContent = data.message || 'Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.';
+                            orderForm.reset();
+                        } else {
+                            throw new Error(data.error || 'Ошибка при отправке заявки');
+                        }
+                    } catch (error) {
+                        formMessage.style.display = 'block';
+                        formMessage.style.color = '#d32f2f';
+                        formMessage.textContent = error.message || 'Произошла ошибка. Попробуйте позже.';
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                    }
+                });
+            }
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href === '#') return;
+                    
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Проверка статуса авторизации
+            checkAuthStatus();
+        });
+        
+        // Функция проверки статуса авторизации
+        async function checkAuthStatus() {
+            const authLink = document.getElementById('authLink');
+            const token = localStorage.getItem('authToken');
+            
+            if (token) {
+                try {
+                    const response = await fetch('/api/auth/verify', {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        // Пользователь авторизован
+                        authLink.textContent = 'Выход';
+                        authLink.href = '#';
+                        authLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            logout();
+                        });
+                        
+                        // Можно добавить отображение имени пользователя
+                        const user = JSON.parse(localStorage.getItem('user') || '{}');
+                        if (user.name) {
+                            authLink.textContent = `${user.name} (Выход)`;
+                        }
+                    } else {
+                        // Токен недействителен
+                        localStorage.removeItem('authToken');
+                        localStorage.removeItem('user');
+                        authLink.textContent = 'Вход';
+                        authLink.href = 'auth.html';
+                    }
+                } catch (error) {
+                    console.error('Ошибка проверки авторизации:', error);
+                    authLink.textContent = 'Вход';
+                    authLink.href = 'auth.html';
+                }
+            } else {
+                authLink.textContent = 'Вход';
+                authLink.href = 'auth.html';
+            }
+        }
+        
+        // Функция выхода
+        function logout() {
+            if (confirm('Вы уверены, что хотите выйти?')) {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('user');
+                window.location.reload();
+            }
+        }
+    </script>
+    
+    <!-- Подключение к бд -->
+<script>
+// Функция для получения изображения продукта по категории
+function getProductImage(category) {
+    const images = {
+        'Овощи': 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
+        'Фрукты': 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
+        'Молочные продукты': 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
+        'Мясо': 'https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80'
+    };
+    return images[category] || images['Овощи'];
+}
+
+// Загрузка продуктов из бд
+async function loadProducts() {
+    try {
+        const response = await fetch('/api/products');
+        
+        if (!response.ok) {
+            throw new Error('Ошибка загрузки продуктов');
+        }
+        
+        const products = await response.json();
+        const container = document.getElementById('products-container');
+        
+        if (products && products.length > 0) {
+            container.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('${getProductImage(product.category || 'Овощи')}');"></div>
+                    <div class="product-info">
+                        <h3>${product.name || 'Продукт'}</h3>
+                        <p>${product.category || 'Категория не указана'}</p>
+                        ${product.source_name ? `<p><small>Источник: ${product.source_name}</small></p>` : ''}
+                        ${product.quantity ? `<p>В наличии: ${product.quantity} ${product.unit || 'шт'}</p>` : ''}
+                        <div class="product-price">${product.price_per_unit ? `${product.price_per_unit} ₽/${product.unit || 'шт'}` : 'Цена по запросу'}</div>
+                        <a href="#contact" class="btn">Заказать</a>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            // Если продуктов нет в БД, оставляем статичные карточки
+            console.log('Продукты не найдены в базе данных. Используются статичные данные.');
+        }
+    } catch (error) {
+        console.error('Ошибка загрузки продуктов:', error);
+    }
+}
+
+// Загружаем продукты при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    loadProducts();
+});
+</script>
+</body>
+</html>
