@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: farm-db
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-farm}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      - ./backend/scripts/init_database.sql:/docker-entrypoint-initdb.d/init_database.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - farm-network
+
+  # Node.js Application Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: farm-app
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT:-3000}
+      DB_USER: ${DB_USER:-postgres}
+      DB_HOST: db
+      DB_NAME: ${DB_NAME:-farm}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_PORT: 5432
+    ports:
+      - "${PORT:-3000}:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./frontend:/app/frontend:ro
+    networks:
+      - farm-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  farm-network:
+    driver: bridge
+
